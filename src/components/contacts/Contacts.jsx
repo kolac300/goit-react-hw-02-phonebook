@@ -4,7 +4,6 @@ import { SearchWrapper } from './Contacts.styled'
 import { Filter } from './filter/Filter'
 import PropTypes from 'prop-types'
 
-
 export class Contacts extends Component {
 	static {
 		Contacts.propTypes = {
@@ -21,8 +20,8 @@ export class Contacts extends Component {
 	render() {
 		const { contacts, filter, onHandleCHange, onDeleteContact } = this.props
 		const normalizedFilter = filter.toLowerCase()
-		const filtredContacts = contacts.filter(el => el.name.toLowerCase().includes(normalizedFilter) ||
-			el.number.includes(normalizedFilter))
+		const filtredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter) ||
+			contact.number.includes(normalizedFilter))
 		return (
 			<>
 				<h2>Contacts</h2>
@@ -30,7 +29,7 @@ export class Contacts extends Component {
 
 					<Filter value={filter} onHandleCHange={onHandleCHange} />
 					<ul>
-						{filtredContacts.map(el => <Contact onDeleteContact={onDeleteContact} key={el.id} id={el.id} name={el.name} number={el.number} />)}
+						{filtredContacts.map(contact => <Contact onDeleteContact={onDeleteContact} key={contact.id} id={contact.id} name={contact.name} number={contact.number} />)}
 					</ul>
 				</SearchWrapper>
 			</>

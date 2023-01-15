@@ -42,9 +42,9 @@ export class PhoneBook extends Component {
 			resetForm()
 		}
 	}
-	isAlredyExistValidation = () => this.props.contacts.reduce((outPutObj, contact) => {
-		outPutObj[contact.name] = contact
-		return outPutObj
+	isAlredyExistValidation = () => this.props.contacts.reduce((outputObj, contact) => {
+		outputObj[contact.name] = contact
+		return outputObj
 	}, {})
 
 	render() {
