@@ -12,8 +12,6 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: 'Name',
-    number: 'Number'
   }
 
   onHandleCHange = event => {

@@ -14,8 +14,6 @@ export class Filter extends Component {
 			<label>Find contacts by name or phone</label><br />
 			<input type="text" value={filter} onChange={onHandleCHange} />
 		</>
-
-
 		)
 	}
 }
