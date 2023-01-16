@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 export class Filter extends Component {
 	static {
 		Filter.propTypes = {
-			filter: PropTypes.string,
+			filter: PropTypes.string.isRequired,
 			onHandleCHange: PropTypes.func.isRequired,
 		}
 	}

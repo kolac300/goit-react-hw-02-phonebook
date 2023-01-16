@@ -21,32 +21,17 @@ const initialValues = {
 	number: '',
 	name: ''
 }
-export class PhoneBook extends Component {
+export class ContactForm extends Component {
 	static {
-		PhoneBook.propTypes = {
-			contacts: PropTypes.arrayOf(PropTypes.shape({
-				id: PropTypes.string.isRequired,
-				name: PropTypes.string.isRequired,
-				number: PropTypes.string.isRequired,
-			})).isRequired,
+		ContactForm.propTypes = {
 			onAddContact: PropTypes.func.isRequired,
 		}
 	}
-
 	onSubmit = (value, { resetForm }) => {
 		const { name, number } = value
-		if (name in this.isAlredyExistValidation()) {
-			alert(`${name} is alredy in contacts`)
-		} else {
-			this.props.onAddContact(name, number)
-			resetForm()
-		}
+		this.props.onAddContact(name, number)
+		resetForm()
 	}
-	isAlredyExistValidation = () => this.props.contacts.reduce((outputObj, contact) => {
-		outputObj[contact.name] = contact
-		return outputObj
-	}, {})
-
 	render() {
 		return (<>
 			<h1>Phone Book</h1>

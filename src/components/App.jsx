@@ -1,7 +1,8 @@
-import { Contacts } from './contacts/Contacts';
-import { PhoneBook } from './phoneBook/PhoneBook';
+import { ContactList } from './contacts/ContactList';
+import { ContactForm } from './phoneBook/ContactForm';
 import React, { Component } from 'react'
 import { nanoid } from 'nanoid'
+import { Filter } from './filter/Filter';
 
 export class App extends Component {
   state = {
@@ -21,29 +22,48 @@ export class App extends Component {
   }
 
   addContact = (name, number) => {
-    this.setState(prev => ({
-      contacts: [...prev.contacts, {
-        name: name,
-        id: nanoid(),
-        number: number
-      }],
+    if (name.toLowerCase() in this.isAlredyExistValidation()) {
+      alert(`${name} is alredy in contacts`)
+    } else {
+      this.setState(prev => ({
+        contacts: [...prev.contacts, {
+          name: name,
+          id: nanoid(),
+          number: number
+        }],
 
-    }))
+      }))
+    }
   }
+
+  isAlredyExistValidation = () => this.state.contacts.reduce((outputObj, contact) => {
+    outputObj[contact.name.toLowerCase()] = contact
+    return outputObj
+  }, {})
 
   onDeleteContact = id => {
     this.setState(prev => ({ contacts: prev.contacts.filter(contact => contact.id !== id) }))
   }
 
+  onFilter = () => {
+    const normalizedFilter = this.state.filter.toLowerCase()
+    return this.state.contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter) ||
+      contact.number.includes(normalizedFilter))
+  }
+
+
   render() {
     return (
       <>
-        <PhoneBook onAddContact={this.addContact}
-          contacts={this.state.contacts} />
-        <Contacts contacts={this.state.contacts}
-          filter={this.state.filter}
-          onHandleCHange={this.onHandleCHange}
+        <ContactForm
+          onAddContact={this.addContact} />
+        <h2>Contacts</h2>
+        <Filter filter={this.state.filter}
+          onHandleCHange={this.onHandleCHange} />
+        <ContactList filtredContacts={this.onFilter()}
           onDeleteContact={this.onDeleteContact} />
+
       </>
     )
   }
