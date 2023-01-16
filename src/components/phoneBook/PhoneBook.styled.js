@@ -27,11 +27,13 @@ button:hover {
 `
 
 export const StyledForm = styled(Form)`
+padding: 0 5em 0 5em;
 border: 1px solid black;
 `
 
 export const InvalidValue = styled.div`
 background-color: red;
+
 text-align: center;
 border-radius:.6em;
 margin-top:.5em;
