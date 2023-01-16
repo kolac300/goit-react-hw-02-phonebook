@@ -27,7 +27,6 @@ button:hover {
 `
 
 export const StyledForm = styled(Form)`
-padding-left: 1em;
 border: 1px solid black;
 `
 
