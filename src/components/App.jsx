@@ -3,6 +3,7 @@ import { ContactForm } from './phoneBook/ContactForm';
 import React, { Component } from 'react'
 import { nanoid } from 'nanoid'
 import { Filter } from './filter/Filter';
+import { ContactsBook } from './App.styled';
 
 export class App extends Component {
   state = {
@@ -52,18 +53,18 @@ export class App extends Component {
       contact.number.includes(normalizedFilter))
   }
 
-
   render() {
     return (
       <>
-        <ContactForm
-          onAddContact={this.addContact} />
-        <h2>Contacts</h2>
-        <Filter filter={this.state.filter}
-          onHandleCHange={this.onHandleCHange} />
-        <ContactList filtredContacts={this.onFilter()}
-          onDeleteContact={this.onDeleteContact} />
-
+        <ContactsBook>
+          <ContactForm
+            onAddContact={this.addContact} />
+          <h2>Contacts</h2>
+          <Filter filter={this.state.filter}
+            onHandleCHange={this.onHandleCHange} />
+          <ContactList filtredContacts={this.onFilter()}
+            onDeleteContact={this.onDeleteContact} />
+        </ContactsBook>
       </>
     )
   }
