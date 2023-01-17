@@ -22,10 +22,8 @@ const initialValues = {
 	name: ''
 }
 export class ContactForm extends Component {
-	static {
-		ContactForm.propTypes = {
-			onAddContact: PropTypes.func.isRequired,
-		}
+	static propTypes = {
+		onAddContact: PropTypes.func.isRequired,
 	}
 	onSubmit = (value, { resetForm }) => {
 		const { name, number } = value

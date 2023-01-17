@@ -5,15 +5,13 @@ import { SearchWrapper } from './Contacts.styled'
 import PropTypes from 'prop-types'
 
 export class ContactList extends Component {
-	static {
-		ContactList.propTypes = {
-			filtredContacts: PropTypes.arrayOf(PropTypes.shape({
-				id: PropTypes.string.isRequired,
-				name: PropTypes.string.isRequired,
-				number: PropTypes.string.isRequired,
-			})).isRequired,
-			onDeleteContact: PropTypes.func.isRequired,
-		}
+	static propTypes = {
+		filtredContacts: PropTypes.arrayOf(PropTypes.shape({
+			id: PropTypes.string.isRequired,
+			name: PropTypes.string.isRequired,
+			number: PropTypes.string.isRequired,
+		})).isRequired,
+		onDeleteContact: PropTypes.func.isRequired,
 	}
 	render() {
 		const { onDeleteContact, filtredContacts } = this.props

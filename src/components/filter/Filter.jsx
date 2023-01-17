@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 export class Filter extends Component {
-	static {
-		Filter.propTypes = {
-			filter: PropTypes.string.isRequired,
-			onHandleCHange: PropTypes.func.isRequired,
-		}
+	static propTypes = {
+		filter: PropTypes.string.isRequired,
+		onHandleCHange: PropTypes.func.isRequired,
 	}
+
 	render() {
 		const { filter, onHandleCHange } = this.props
 		return (<>
